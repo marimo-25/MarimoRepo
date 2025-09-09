@@ -1,0 +1,1 @@
+namespace Household.Web.ViewModels.Dashboard { public sealed class WeeklySummaryViewModel { public List<string> Labels { get; set; } = new(); public List<decimal> Amounts { get; set; } = new(); } }
