@@ -1,5 +1,6 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
+using Microsoft.Extensions.Logging;
 using System.Net;
 using System.Text;
 using System.Text.Json;
@@ -9,6 +10,12 @@ namespace Household.Functions.Functions;
 public class TokenFunctions
 {
     private const int MaxRequestBodyLength = 1024; // 1KB
+    private readonly ILogger<TokenFunctions> _logger;
+
+    public TokenFunctions(ILogger<TokenFunctions> logger)
+    {
+        _logger = logger;
+    }
 
     [Function("Ping")]
     public async Task<HttpResponseData> Ping([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "ping")] HttpRequestData req)
@@ -26,6 +33,7 @@ public class TokenFunctions
             // リクエストボディの長さを検証
             if (req.Body.Length > MaxRequestBodyLength)
             {
+                _logger.LogWarning($"Request body exceeds maximum size. Size: {req.Body.Length} bytes");
                 var errorRes = req.CreateResponse(HttpStatusCode.BadRequest);
                 await errorRes.WriteAsJsonAsync(new { error = $"Request body is too large. Maximum size: {MaxRequestBodyLength} bytes." });
                 return errorRes;
@@ -35,9 +43,11 @@ public class TokenFunctions
             using (var reader = new StreamReader(req.Body, Encoding.UTF8))
             {
                 var body = await reader.ReadToEndAsync();
+                _logger.LogInformation($"Received request body: {body}");
 
                 if (string.IsNullOrWhiteSpace(body))
                 {
+                    _logger.LogWarning("Request body is empty");
                     var errorRes = req.CreateResponse(HttpStatusCode.BadRequest);
                     await errorRes.WriteAsJsonAsync(new { error = "Request body cannot be empty." });
                     return errorRes;
@@ -46,20 +56,23 @@ public class TokenFunctions
                 // ここでトークンを生成またはデータベースから取得
                 // 仮の実装として、UUIDを返す
                 var token = Guid.NewGuid().ToString();
+                _logger.LogInformation($"Generated token: {token}");
 
                 var response = req.CreateResponse(HttpStatusCode.OK);
                 await response.WriteAsJsonAsync(new { token });
                 return response;
             }
         }
-        catch (JsonException)
+        catch (JsonException ex)
         {
+            _logger.LogError($"JSON parsing error: {ex.Message}");
             var errorRes = req.CreateResponse(HttpStatusCode.BadRequest);
             await errorRes.WriteAsJsonAsync(new { error = "Invalid JSON in request body." });
             return errorRes;
         }
         catch (Exception ex)
         {
+            _logger.LogError($"Unexpected error: {ex.Message}");
             var errorRes = req.CreateResponse(HttpStatusCode.InternalServerError);
             await errorRes.WriteAsJsonAsync(new { error = "An unexpected error occurred.", details = ex.Message });
             return errorRes;
