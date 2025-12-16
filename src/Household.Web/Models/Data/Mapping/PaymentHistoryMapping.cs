@@ -10,6 +10,7 @@ namespace Household.Web.Models.Data.Mapping
         [Column, NotNull] public string Operation { get; set; } = "";
         [Column, NotNull] public string SnapshotJson { get; set; } = "";
         [Column] public string? Reason { get; set; }
+        [Column] public string? Comment { get; set; }
         [Column, NotNull] public string PerformedBy { get; set; } = "";
         [Column, NotNull] public DateTime PerformedAt { get; set; }
     }
