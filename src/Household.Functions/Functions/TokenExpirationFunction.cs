@@ -9,7 +9,7 @@ namespace Household.Functions.Functions;
 
 /// <summary>
 /// Token期限管理タイマー関数
-/// 定期的にToken期限を確認し、期限切れトークンをクリーンアップします。
+/// 定期的にToken期限を確認し、期限切れトークンをクリーンアップします
 /// </summary>
 public class TokenExpirationFunction
 {
