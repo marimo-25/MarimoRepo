@@ -242,6 +242,22 @@
           }
         }
       },
+      "Microsoft.Azure.Functions.Worker.Extensions.Timer/4.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Azure.Functions.Worker.Extensions.Abstractions": "1.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Azure.Functions.Worker.Extensions.Timer.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Azure.Functions.Worker.Extensions.Timer.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Azure.Functions.Worker.Grpc/1.16.0": {
         "type": "package",
         "dependencies": {
@@ -1485,6 +1501,20 @@
         "lib/netstandard2.0/Microsoft.Azure.Functions.Worker.Extensions.Http.xml",
         "microsoft.azure.functions.worker.extensions.http.3.1.0.nupkg.sha512",
         "microsoft.azure.functions.worker.extensions.http.nuspec"
+      ]
+    },
+    "Microsoft.Azure.Functions.Worker.Extensions.Timer/4.1.0": {
+      "sha512": "8HvZaChaw40EKBfBew0XG132YhO6bEw0nznvey7gkhm9thUe6wkA2LXTXHXxcYefbx0rlh57WedSiJgKTG7MvQ==",
+      "type": "package",
+      "path": "microsoft.azure.functions.worker.extensions.timer/4.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/netstandard2.0/Microsoft.Azure.Functions.Worker.Extensions.Timer.dll",
+        "lib/netstandard2.0/Microsoft.Azure.Functions.Worker.Extensions.Timer.xml",
+        "microsoft.azure.functions.worker.extensions.timer.4.1.0.nupkg.sha512",
+        "microsoft.azure.functions.worker.extensions.timer.nuspec"
       ]
     },
     "Microsoft.Azure.Functions.Worker.Grpc/1.16.0": {
@@ -2995,6 +3025,7 @@
       "Azure.Storage.Blobs >= 12.21.1",
       "Microsoft.Azure.Functions.Worker >= 1.22.0",
       "Microsoft.Azure.Functions.Worker.Extensions.Http >= 3.1.0",
+      "Microsoft.Azure.Functions.Worker.Extensions.Timer >= 4.1.0",
       "Microsoft.Azure.Functions.Worker.Sdk >= 1.17.4",
       "Serilog.Sinks.Console >= 5.0.1",
       "System.IdentityModel.Tokens.Jwt >= 7.6.0"
@@ -3070,6 +3101,10 @@
           "Microsoft.Azure.Functions.Worker.Extensions.Http": {
             "target": "Package",
             "version": "[3.1.0, )"
+          },
+          "Microsoft.Azure.Functions.Worker.Extensions.Timer": {
+            "target": "Package",
+            "version": "[4.1.0, )"
           },
           "Microsoft.Azure.Functions.Worker.Sdk": {
             "target": "Package",

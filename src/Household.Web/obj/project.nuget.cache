@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "/UtK7i+kieg=",
-  "success": false,
+  "dgSpecHash": "WaI7Gejj9Lk=",
+  "success": true,
   "projectFilePath": "C:\\Users\\c0117\\source\\repos\\MarimoRepo\\src\\Household.Web\\Household.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\c0117\\.nuget\\packages\\azure.core\\1.41.0\\azure.core.1.41.0.nupkg.sha512",
@@ -9,6 +9,8 @@
     "C:\\Users\\c0117\\.nuget\\packages\\azure.security.keyvault.secrets\\4.6.0\\azure.security.keyvault.secrets.4.6.0.nupkg.sha512",
     "C:\\Users\\c0117\\.nuget\\packages\\azure.storage.blobs\\12.21.1\\azure.storage.blobs.12.21.1.nupkg.sha512",
     "C:\\Users\\c0117\\.nuget\\packages\\azure.storage.common\\12.20.1\\azure.storage.common.12.20.1.nupkg.sha512",
+    "C:\\Users\\c0117\\.nuget\\packages\\linq2db\\6.0.0\\linq2db.6.0.0.nupkg.sha512",
+    "C:\\Users\\c0117\\.nuget\\packages\\linq2db.sqlserver\\6.0.0\\linq2db.sqlserver.6.0.0.nupkg.sha512",
     "C:\\Users\\c0117\\.nuget\\packages\\microsoft.applicationinsights\\2.20.0\\microsoft.applicationinsights.2.20.0.nupkg.sha512",
     "C:\\Users\\c0117\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.8\\microsoft.aspnetcore.authentication.jwtbearer.8.0.8.nupkg.sha512",
     "C:\\Users\\c0117\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.8\\microsoft.aspnetcore.cryptography.internal.8.0.8.nupkg.sha512",
@@ -65,28 +67,5 @@
     "C:\\Users\\c0117\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512",
     "C:\\Users\\c0117\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1103",
-      "level": "Error",
-      "message": "バージョン (>= 5.5.0) の安定版パッケージ linq2db が見つかりません\r\n  - 151 バージョンが nuget.org に見つかりました。 [ 最も近いバージョン: 6.0.0-preview.1 ]\r\n  - 0 バージョンが Microsoft Visual Studio Offline Packages に見つかりました\r\n  - 0 バージョンが C:\\Program Files\\dotnet\\library-packs に見つかりました",
-      "projectPath": "C:\\Users\\c0117\\source\\repos\\MarimoRepo\\src\\Household.Web\\Household.Web.csproj",
-      "filePath": "C:\\Users\\c0117\\source\\repos\\MarimoRepo\\src\\Household.Web\\Household.Web.csproj",
-      "libraryId": "linq2db",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    },
-    {
-      "code": "NU1103",
-      "level": "Error",
-      "message": "バージョン (>= 5.5.0) の安定版パッケージ linq2db.SqlServer が見つかりません\r\n  - 138 バージョンが nuget.org に見つかりました。 [ 最も近いバージョン: 6.0.0-preview.1 ]\r\n  - 0 バージョンが Microsoft Visual Studio Offline Packages に見つかりました\r\n  - 0 バージョンが C:\\Program Files\\dotnet\\library-packs に見つかりました",
-      "projectPath": "C:\\Users\\c0117\\source\\repos\\MarimoRepo\\src\\Household.Web\\Household.Web.csproj",
-      "filePath": "C:\\Users\\c0117\\source\\repos\\MarimoRepo\\src\\Household.Web\\Household.Web.csproj",
-      "libraryId": "linq2db.SqlServer",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  "logs": []
 }

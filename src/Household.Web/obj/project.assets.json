@@ -100,6 +100,127 @@
           }
         }
       },
+      "linq2db/6.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/linq2db.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/linq2db.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "linq2db.SqlServer/6.0.0": {
+        "type": "package",
+        "contentFiles": {
+          "contentFiles/any/any/LinqToDB.Templates/CopyMe.SqlServer.tt.txt": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/any/LinqToDB.Templates/DataAnnotations.ttinclude": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/any/LinqToDB.Templates/DataModel.ttinclude": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/any/LinqToDB.Templates/EditableObject.ttinclude": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/any/LinqToDB.Templates/Equatable.ttinclude": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/any/LinqToDB.Templates/Humanizer.ttinclude": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/any/LinqToDB.Templates/LinqToDB.SqlServer.SqlTypes.Tools.ttinclude": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/any/LinqToDB.Templates/LinqToDB.SqlServer.SqlTypes.ttinclude": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/any/LinqToDB.Templates/LinqToDB.SqlServer.Tools.ttinclude": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/any/LinqToDB.Templates/LinqToDB.SqlServer.ttinclude": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/any/LinqToDB.Templates/LinqToDB.Tools.ttinclude": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/any/LinqToDB.Templates/LinqToDB.ttinclude": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/any/LinqToDB.Templates/MultipleFiles.ttinclude": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/any/LinqToDB.Templates/NotifyDataErrorInfo.ttinclude": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/any/LinqToDB.Templates/NotifyPropertyChanged.ttinclude": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/any/LinqToDB.Templates/ObsoleteAttributes.ttinclude": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/any/LinqToDB.Templates/PluralizationService.ttinclude": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/any/LinqToDB.Templates/README.md": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/any/LinqToDB.Templates/T4Model.ttinclude": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/any/LinqToDB.Templates/Validation.ttinclude": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
+        },
+        "build": {
+          "build/linq2db.SqlServer.props": {}
+        }
+      },
       "Microsoft.ApplicationInsights/2.20.0": {
         "type": "package",
         "dependencies": {
@@ -1132,6 +1253,97 @@
         "lib/net6.0/Azure.Storage.Common.xml",
         "lib/netstandard2.0/Azure.Storage.Common.dll",
         "lib/netstandard2.0/Azure.Storage.Common.xml"
+      ]
+    },
+    "linq2db/6.0.0": {
+      "sha512": "F/CQ6oD4Z13f0DVnpLL0KbVfomA4bWWcVxCEOiB5NX2GOtCgLEcFpp2o17fArr5U+mOAT8hBru5Xzcz2rYEsFQ==",
+      "type": "package",
+      "path": "linq2db/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "MIT-LICENSE.txt",
+        "README.md",
+        "images/icon.png",
+        "lib/net10.0/linq2db.dll",
+        "lib/net10.0/linq2db.xml",
+        "lib/net462/linq2db.dll",
+        "lib/net462/linq2db.xml",
+        "lib/net8.0/linq2db.dll",
+        "lib/net8.0/linq2db.xml",
+        "lib/net9.0/linq2db.dll",
+        "lib/net9.0/linq2db.xml",
+        "lib/netstandard2.0/linq2db.dll",
+        "lib/netstandard2.0/linq2db.xml",
+        "linq2db.6.0.0.nupkg.sha512",
+        "linq2db.nuspec"
+      ]
+    },
+    "linq2db.SqlServer/6.0.0": {
+      "sha512": "ounpWZAyCR3XYhC7QF55mRNiMrehU5490HkfSRc9ukGgwQfhPmbBuiPbEgzQtlzMT/B4CxF1MLIJb8iR06KBFQ==",
+      "type": "package",
+      "path": "linq2db.sqlserver/6.0.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "MIT-LICENSE.txt",
+        "README.md",
+        "build/linq2db.SqlServer.props",
+        "content/LinqToDB.Templates/CopyMe.SqlServer.tt.txt",
+        "content/LinqToDB.Templates/DataAnnotations.ttinclude",
+        "content/LinqToDB.Templates/DataModel.ttinclude",
+        "content/LinqToDB.Templates/EditableObject.ttinclude",
+        "content/LinqToDB.Templates/Equatable.ttinclude",
+        "content/LinqToDB.Templates/Humanizer.ttinclude",
+        "content/LinqToDB.Templates/LinqToDB.SqlServer.SqlTypes.Tools.ttinclude",
+        "content/LinqToDB.Templates/LinqToDB.SqlServer.SqlTypes.ttinclude",
+        "content/LinqToDB.Templates/LinqToDB.SqlServer.Tools.ttinclude",
+        "content/LinqToDB.Templates/LinqToDB.SqlServer.ttinclude",
+        "content/LinqToDB.Templates/LinqToDB.Tools.ttinclude",
+        "content/LinqToDB.Templates/LinqToDB.ttinclude",
+        "content/LinqToDB.Templates/MultipleFiles.ttinclude",
+        "content/LinqToDB.Templates/NotifyDataErrorInfo.ttinclude",
+        "content/LinqToDB.Templates/NotifyPropertyChanged.ttinclude",
+        "content/LinqToDB.Templates/ObsoleteAttributes.ttinclude",
+        "content/LinqToDB.Templates/PluralizationService.ttinclude",
+        "content/LinqToDB.Templates/README.md",
+        "content/LinqToDB.Templates/T4Model.ttinclude",
+        "content/LinqToDB.Templates/Validation.ttinclude",
+        "contentFiles/any/any/LinqToDB.Templates/CopyMe.SqlServer.tt.txt",
+        "contentFiles/any/any/LinqToDB.Templates/DataAnnotations.ttinclude",
+        "contentFiles/any/any/LinqToDB.Templates/DataModel.ttinclude",
+        "contentFiles/any/any/LinqToDB.Templates/EditableObject.ttinclude",
+        "contentFiles/any/any/LinqToDB.Templates/Equatable.ttinclude",
+        "contentFiles/any/any/LinqToDB.Templates/Humanizer.ttinclude",
+        "contentFiles/any/any/LinqToDB.Templates/LinqToDB.SqlServer.SqlTypes.Tools.ttinclude",
+        "contentFiles/any/any/LinqToDB.Templates/LinqToDB.SqlServer.SqlTypes.ttinclude",
+        "contentFiles/any/any/LinqToDB.Templates/LinqToDB.SqlServer.Tools.ttinclude",
+        "contentFiles/any/any/LinqToDB.Templates/LinqToDB.SqlServer.ttinclude",
+        "contentFiles/any/any/LinqToDB.Templates/LinqToDB.Tools.ttinclude",
+        "contentFiles/any/any/LinqToDB.Templates/LinqToDB.ttinclude",
+        "contentFiles/any/any/LinqToDB.Templates/MultipleFiles.ttinclude",
+        "contentFiles/any/any/LinqToDB.Templates/NotifyDataErrorInfo.ttinclude",
+        "contentFiles/any/any/LinqToDB.Templates/NotifyPropertyChanged.ttinclude",
+        "contentFiles/any/any/LinqToDB.Templates/ObsoleteAttributes.ttinclude",
+        "contentFiles/any/any/LinqToDB.Templates/PluralizationService.ttinclude",
+        "contentFiles/any/any/LinqToDB.Templates/README.md",
+        "contentFiles/any/any/LinqToDB.Templates/T4Model.ttinclude",
+        "contentFiles/any/any/LinqToDB.Templates/Validation.ttinclude",
+        "images/icon.png",
+        "linq2db.sqlserver.6.0.0.nupkg.sha512",
+        "linq2db.sqlserver.nuspec",
+        "readme.txt",
+        "tools/Humanizer.dll",
+        "tools/Microsoft.Bcl.AsyncInterfaces.dll",
+        "tools/Microsoft.SqlServer.Server.dll",
+        "tools/Microsoft.SqlServer.Types.dll",
+        "tools/arm64/SqlServerSpatial170.dll",
+        "tools/linq2db.Scaffold.dll",
+        "tools/linq2db.Tools.dll",
+        "tools/linq2db.dll",
+        "tools/x64/SqlServerSpatial170.dll",
+        "tools/x86/SqlServerSpatial170.dll"
       ]
     },
     "Microsoft.ApplicationInsights/2.20.0": {
@@ -2640,8 +2852,8 @@
       "Serilog.AspNetCore >= 8.0.1",
       "Serilog.Sinks.ApplicationInsights >= 4.0.0",
       "Serilog.Sinks.Console >= 5.0.1",
-      "linq2db >= 5.5.0",
-      "linq2db.SqlServer >= 5.5.0"
+      "linq2db >= 6.0.0",
+      "linq2db.SqlServer >= 6.0.0"
     ]
   },
   "packageFolders": {
@@ -2729,11 +2941,11 @@
           },
           "linq2db": {
             "target": "Package",
-            "version": "[5.5.0, )"
+            "version": "[6.0.0, )"
           },
           "linq2db.SqlServer": {
             "target": "Package",
-            "version": "[5.5.0, )"
+            "version": "[6.0.0, )"
           }
         },
         "imports": [
@@ -2758,25 +2970,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1103",
-      "level": "Error",
-      "message": "バージョン (>= 5.5.0) の安定版パッケージ linq2db が見つかりません\r\n  - 151 バージョンが nuget.org に見つかりました。 [ 最も近いバージョン: 6.0.0-preview.1 ]\r\n  - 0 バージョンが Microsoft Visual Studio Offline Packages に見つかりました\r\n  - 0 バージョンが C:\\Program Files\\dotnet\\library-packs に見つかりました",
-      "libraryId": "linq2db",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    },
-    {
-      "code": "NU1103",
-      "level": "Error",
-      "message": "バージョン (>= 5.5.0) の安定版パッケージ linq2db.SqlServer が見つかりません\r\n  - 138 バージョンが nuget.org に見つかりました。 [ 最も近いバージョン: 6.0.0-preview.1 ]\r\n  - 0 バージョンが Microsoft Visual Studio Offline Packages に見つかりました\r\n  - 0 バージョンが C:\\Program Files\\dotnet\\library-packs に見つかりました",
-      "libraryId": "linq2db.SqlServer",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  }
 }

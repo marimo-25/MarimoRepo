@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Household.Functions")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3ccda9eb093a8486a6cd6213c249eb3931dbad21")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+63a59902651d58ca8dff27024a80ac391338fb8a")]
 [assembly: System.Reflection.AssemblyProductAttribute("Household.Functions")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Household.Functions")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

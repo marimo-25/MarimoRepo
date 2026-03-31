@@ -85,11 +85,11 @@
             },
             "linq2db": {
               "target": "Package",
-              "version": "[5.5.0, )"
+              "version": "[6.0.0, )"
             },
             "linq2db.SqlServer": {
               "target": "Package",
-              "version": "[5.5.0, )"
+              "version": "[6.0.0, )"
             }
           },
           "imports": [
