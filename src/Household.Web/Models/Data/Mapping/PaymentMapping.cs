@@ -1,3 +1,4 @@
+using LinqToDB;
 using LinqToDB.Mapping;
 
 namespace Household.Web.Models.Data.Mapping

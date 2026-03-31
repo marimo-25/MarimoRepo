@@ -19,7 +19,11 @@ public sealed class DashboardController : ControllerBase
 }
 
 [Authorize]
+[Route("")]
+[Route("Dashboard")]
 public class DashboardControllerMvc : Controller
 {
-    public IActionResult Index() => View();
+    [HttpGet("")]
+    [HttpGet("Index")]
+    public IActionResult Index() => View("~/Views/Dashboard/Index.cshtml");
 }

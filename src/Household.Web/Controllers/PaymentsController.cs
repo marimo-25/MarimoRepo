@@ -17,6 +17,13 @@ public class PaymentsController : ControllerBase
     public async Task<ActionResult<List<PaymentDto>>> List([FromQuery] PaymentQueryDto q, CancellationToken ct)
         => Ok(await _svc.ListAsync(q, ct));
 
+    [HttpPost]
+    public async Task<IActionResult> Create([FromBody] CreatePaymentDto dto, CancellationToken ct)
+    {
+        var id = await _svc.CreateAsync(dto, User.Identity?.Name ?? "unknown", ct);
+        return Created($"/api/payments/{id}", new { id });
+    }
+
     [Authorize(Roles="Admin")]
     [HttpPost("{id:long}/settle")]
     public async Task<IActionResult> Settle(long id, [FromHeader(Name="If-Match")] string? etag, CancellationToken ct)

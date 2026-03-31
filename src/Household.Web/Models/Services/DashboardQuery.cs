@@ -1,5 +1,6 @@
 using Household.Web.Common.Dtos.Dashboard;
 using LinqToDB;
+using LinqToDB.Async;
 
 namespace Household.Web.Models.Services
 {

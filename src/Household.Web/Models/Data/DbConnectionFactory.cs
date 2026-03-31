@@ -1,6 +1,5 @@
 using LinqToDB;
 using LinqToDB.Data;
-using Microsoft.Data.SqlClient;
 
 namespace Household.Web.Models.Data
 {
@@ -8,9 +7,7 @@ namespace Household.Web.Models.Data
     {
         public static DataOptions<HouseholdDb> CreateOptions(string connectionString)
         {
-            var conn = new SqlConnection(connectionString);
-            return new DataOptions<HouseholdDb>()
-                .UseConnectionFactory(LinqToDB.ProviderName.SqlServer, () => conn);
+            return new DataOptions<HouseholdDb>(new DataOptions().UseSqlServer(connectionString));
         }
     }
 }

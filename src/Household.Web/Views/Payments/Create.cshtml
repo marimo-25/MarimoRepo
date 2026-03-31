@@ -1,0 +1,108 @@
+@model Household.Web.Common.Dtos.Payments.CreatePaymentDto
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "支払追加";
+}
+
+<div class="page-header">
+    <h2 class="page-title">支払追加</h2>
+</div>
+
+<div class="ant-card ant-card-bordered"
+     style="max-width:520px;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
+    <div class="ant-card-body">
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="ant-alert ant-alert-error ant-alert-with-description"
+                 style="margin-bottom:20px;border-radius:6px;">
+                <span class="ant-alert-message">入力エラー</span>
+                <span class="ant-alert-description">@ViewBag.Error</span>
+            </div>
+        }
+
+        <form method="post" action="/Payments/Create" class="ant-form ant-form-vertical">
+
+            <div class="ant-form-item">
+                <div class="ant-form-item-label">
+                    <label><span class="ant-form-item-required" style="color:#ff4d4f;margin-right:4px;">*</span>日付</label>
+                </div>
+                <div class="ant-form-item-control">
+                    <div class="ant-form-item-control-input">
+                        <div class="ant-form-item-control-input-content">
+                            <input class="ant-input" type="date" name="paymentDate"
+                                   value="@Model?.PaymentDate.ToString("yyyy-MM-dd")"
+                                   style="height:36px;" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ant-form-item">
+                <div class="ant-form-item-label">
+                    <label><span style="color:#ff4d4f;margin-right:4px;">*</span>店舗名</label>
+                </div>
+                <div class="ant-form-item-control">
+                    <div class="ant-form-item-control-input">
+                        <div class="ant-form-item-control-input-content">
+                            <input class="ant-input" type="text" name="storeName"
+                                   value="@Model?.StoreName"
+                                   placeholder="例: スーパーマルエツ"
+                                   style="height:36px;" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ant-form-item">
+                <div class="ant-form-item-label">
+                    <label><span style="color:#ff4d4f;margin-right:4px;">*</span>金額（円）</label>
+                </div>
+                <div class="ant-form-item-control">
+                    <div class="ant-form-item-control-input">
+                        <div class="ant-form-item-control-input-content">
+                            <span class="ant-input-group-wrapper">
+                                <span class="ant-input-wrapper ant-input-group">
+                                    <input class="ant-input" type="number" name="amount"
+                                           value="@(Model != null && Model.Amount > 0 ? Model.Amount.ToString() : "")"
+                                           min="1" step="1"
+                                           placeholder="0"
+                                           style="height:36px;" required />
+                                    <span class="ant-input-group-addon">円</span>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ant-form-item" style="margin-bottom:28px;">
+                <div class="ant-form-item-label">
+                    <label><span style="color:#ff4d4f;margin-right:4px;">*</span>支払者</label>
+                </div>
+                <div class="ant-form-item-control">
+                    <div class="ant-form-item-control-input">
+                        <div class="ant-form-item-control-input-content">
+                            <input class="ant-input" type="text" name="payer"
+                                   value="@Model?.Payer"
+                                   placeholder="例: Alice"
+                                   style="height:36px;" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display:flex;gap:12px;">
+                <button type="submit" class="ant-btn ant-btn-primary"
+                        style="height:36px;padding:0 24px;font-size:14px;">
+                    <span>登録する</span>
+                </button>
+                <a href="/Payments" class="ant-btn ant-btn-default"
+                   style="height:36px;padding:0 20px;line-height:34px;font-size:14px;display:inline-block;">
+                    <span>キャンセル</span>
+                </a>
+            </div>
+
+        </form>
+    </div>
+</div>
