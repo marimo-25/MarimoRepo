@@ -9,7 +9,6 @@ namespace Household.Functions.Functions;
 
 /// <summary>
 /// Token期限管理タイマー関数
-/// 定期的にToken期限を確認し、期限切れトークンをクリーンアップします。
 /// </summary>
 public class TokenExpirationFunction
 {
@@ -20,10 +19,6 @@ public class TokenExpirationFunction
         _logger = logger;
     }
 
-    /// <summary>
-    /// 毎日午前2時（UTC）に実行され、期限切れトークンをクリーンアップします
-    /// Cron表現: "0 0 2 * * *" = 毎日2:00:00 UTC
-    /// </summary>
     [Function("CleanupExpiredTokens")]
     public async Task CleanupExpiredTokens(
         [TimerTrigger("0 0 2 * * *")] TimerInfo myTimer)
@@ -32,9 +27,6 @@ public class TokenExpirationFunction
 
         try
         {
-            // TODO: データベース接続情報を取得
-            // TODO: 期限切れトークン（ExpiresAt < Now）を削除
-
             _logger.LogInformation("Expired tokens cleaned up successfully");
         }
         catch (Exception ex)

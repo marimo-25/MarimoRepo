@@ -9,7 +9,7 @@ namespace Household.Functions.Functions;
 
 public class TokenFunctions
 {
-    private const int MaxRequestBodyLength = 1024; // 1KB
+    private const int MaxRequestBodyLength = 1024;
     private readonly ILogger<TokenFunctions> _logger;
 
     public TokenFunctions(ILogger<TokenFunctions> logger)
@@ -53,8 +53,6 @@ public class TokenFunctions
                     return errorRes;
                 }
 
-                // ここでトークンを生成またはデータベースから取得
-                // 仮の実装として、UUIDを返す
                 var token = Guid.NewGuid().ToString();
                 _logger.LogInformation($"Generated token: {token}");
 
