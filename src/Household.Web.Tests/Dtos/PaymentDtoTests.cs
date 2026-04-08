@@ -10,7 +10,7 @@ public class PaymentDtoTests
     public void From_MapsAllFieldsCorrectly()
     {
         var date = new DateOnly(2026, 4, 1);
-        var payment = new Payment(42, date, "スーパー", 3200m, "Alice", PaymentStatus.Settled, true);
+        var payment = new Payment(42, date, "スーパー", 3200m, "テスト太郎", PaymentStatus.Settled, true);
 
         var dto = PaymentDto.From(payment);
 
@@ -18,7 +18,7 @@ public class PaymentDtoTests
         Assert.Equal(date, dto.PaymentDate);
         Assert.Equal("スーパー", dto.StoreName);
         Assert.Equal(3200m, dto.Amount);
-        Assert.Equal("Alice", dto.Payer);
+        Assert.Equal("テスト太郎", dto.Payer);
         Assert.Equal("Settled", dto.Status);
         Assert.True(dto.IsActive);
     }
@@ -29,7 +29,7 @@ public class PaymentDtoTests
     [InlineData(PaymentStatus.Cancelled, "Cancelled")]
     public void From_StringifiesStatusCorrectly(PaymentStatus status, string expected)
     {
-        var payment = new Payment(1, new DateOnly(2026, 4, 1), "店舗", 100m, "Bob", status, true);
+        var payment = new Payment(1, new DateOnly(2026, 4, 1), "店舗", 100m, "テスト花子", status, true);
 
         var dto = PaymentDto.From(payment);
 
@@ -39,7 +39,7 @@ public class PaymentDtoTests
     [Fact]
     public void From_WhenCancelled_IsActiveFalse()
     {
-        var payment = new Payment(1, new DateOnly(2026, 4, 1), "店舗", 100m, "Bob", PaymentStatus.Pending, true);
+        var payment = new Payment(1, new DateOnly(2026, 4, 1), "店舗", 100m, "テスト花子", PaymentStatus.Pending, true);
         payment.Cancel();
 
         var dto = PaymentDto.From(payment);

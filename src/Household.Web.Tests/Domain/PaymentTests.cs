@@ -6,7 +6,7 @@ namespace Household.Web.Tests.Domain;
 public class PaymentTests
 {
     private static Payment CreatePayment(PaymentStatus status = PaymentStatus.Pending, bool isActive = true) =>
-        new(1, new DateOnly(2026, 4, 1), "テスト店舗", 1000m, "Alice", status, isActive);
+        new(1, new DateOnly(2026, 4, 1), "テスト店舗", 1000m, "テスト太郎", status, isActive);
 
     // ── Settle ─────────────────────────────────────────────
 
@@ -74,13 +74,13 @@ public class PaymentTests
     public void Constructor_SetsAllPropertiesCorrectly()
     {
         var date = new DateOnly(2026, 4, 1);
-        var payment = new Payment(42, date, "スーパー", 3200m, "Bob", PaymentStatus.Pending, true);
+        var payment = new Payment(42, date, "スーパー", 3200m, "テスト花子", PaymentStatus.Pending, true);
 
         Assert.Equal(42, payment.Id);
         Assert.Equal(date, payment.PaymentDate);
         Assert.Equal("スーパー", payment.StoreName);
         Assert.Equal(3200m, payment.Amount);
-        Assert.Equal("Bob", payment.Payer);
+        Assert.Equal("テスト花子", payment.Payer);
         Assert.Equal(PaymentStatus.Pending, payment.Status);
         Assert.True(payment.IsActive);
     }

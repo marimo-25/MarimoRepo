@@ -8,9 +8,9 @@ namespace Household.Web.Models.Mock
         private static long _nextId = 4;
         private static readonly List<Payment> _store =
         [
-            new Payment(1, new DateOnly(2026, 3, 28), "スーパーマルエツ", 3200m, "Alice", PaymentStatus.Settled, true),
-            new Payment(2, new DateOnly(2026, 3, 29), "コンビニ", 580m,   "Bob",   PaymentStatus.Pending,  true),
-            new Payment(3, new DateOnly(2026, 3, 31), "ドラッグストア",  1450m, "Alice", PaymentStatus.Pending,  true),
+            new Payment(1, new DateOnly(2026, 3, 28), "スーパーマルエツ", 3200m, "テスト太郎", PaymentStatus.Settled, true),
+            new Payment(2, new DateOnly(2026, 3, 29), "コンビニ", 580m,   "テスト花子",   PaymentStatus.Pending,  true),
+            new Payment(3, new DateOnly(2026, 3, 31), "ドラッグストア",  1450m, "テスト太郎", PaymentStatus.Pending,  true),
         ];
 
         public Task<long> InsertAsync(Payment entity, CancellationToken ct)

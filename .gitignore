@@ -67,6 +67,7 @@ PublishScripts/
 
 # ===== Azure Functions local settings =====
 local.settings.json
+settings.local.json
 
 # ===== User secrets / environment =====
 appsettings.Development.json

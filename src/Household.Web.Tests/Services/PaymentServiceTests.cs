@@ -28,10 +28,10 @@ public class PaymentServiceTests
     [Fact]
     public async Task CreateAsync_ReturnsIdFromRepository()
     {
-        var dto = new CreatePaymentDto { PaymentDate = new DateOnly(2026, 4, 1), StoreName = "スーパー", Amount = 1000m, Payer = "Alice" };
+        var dto = new CreatePaymentDto { PaymentDate = new DateOnly(2026, 4, 1), StoreName = "スーパー", Amount = 1000m, Payer = "テスト太郎" };
         _repo.Setup(r => r.InsertAsync(It.IsAny<Payment>(), It.IsAny<CancellationToken>())).ReturnsAsync(99L);
 
-        var id = await _sut.CreateAsync(dto, "Alice", CancellationToken.None);
+        var id = await _sut.CreateAsync(dto, "テスト太郎", CancellationToken.None);
 
         Assert.Equal(99L, id);
     }
@@ -39,13 +39,13 @@ public class PaymentServiceTests
     [Fact]
     public async Task CreateAsync_InsertsPaymentWithPendingStatus()
     {
-        var dto = new CreatePaymentDto { PaymentDate = new DateOnly(2026, 4, 1), StoreName = "スーパー", Amount = 1000m, Payer = "Alice" };
+        var dto = new CreatePaymentDto { PaymentDate = new DateOnly(2026, 4, 1), StoreName = "スーパー", Amount = 1000m, Payer = "テスト太郎" };
         Payment? captured = null;
         _repo.Setup(r => r.InsertAsync(It.IsAny<Payment>(), It.IsAny<CancellationToken>()))
              .Callback<Payment, CancellationToken>((p, _) => captured = p)
              .ReturnsAsync(1L);
 
-        await _sut.CreateAsync(dto, "Alice", CancellationToken.None);
+        await _sut.CreateAsync(dto, "テスト太郎", CancellationToken.None);
 
         Assert.NotNull(captured);
         Assert.Equal(PaymentStatus.Pending, captured.Status);
@@ -53,18 +53,18 @@ public class PaymentServiceTests
         Assert.Equal(0, captured.Id);
         Assert.Equal("スーパー", captured.StoreName);
         Assert.Equal(1000m, captured.Amount);
-        Assert.Equal("Alice", captured.Payer);
+        Assert.Equal("テスト太郎", captured.Payer);
     }
 
     [Fact]
     public async Task CreateAsync_WritesCreateHistory()
     {
-        var dto = new CreatePaymentDto { PaymentDate = new DateOnly(2026, 4, 1), StoreName = "スーパー", Amount = 500m, Payer = "Bob" };
+        var dto = new CreatePaymentDto { PaymentDate = new DateOnly(2026, 4, 1), StoreName = "スーパー", Amount = 500m, Payer = "テスト花子" };
         _repo.Setup(r => r.InsertAsync(It.IsAny<Payment>(), It.IsAny<CancellationToken>())).ReturnsAsync(7L);
 
-        await _sut.CreateAsync(dto, "Bob", CancellationToken.None);
+        await _sut.CreateAsync(dto, "テスト花子", CancellationToken.None);
 
-        _history.Verify(h => h.AppendAsync(7L, "Create", It.IsAny<object>(), null, "Bob", It.IsAny<CancellationToken>()), Times.Once);
+        _history.Verify(h => h.AppendAsync(7L, "Create", It.IsAny<object>(), null, "テスト花子", It.IsAny<CancellationToken>()), Times.Once);
     }
 
     // ── ListAsync ───────────────────────────────────────────
@@ -74,8 +74,8 @@ public class PaymentServiceTests
     {
         var payments = new List<Payment>
         {
-            new(1, new DateOnly(2026, 4, 1), "スーパー", 1000m, "Alice", PaymentStatus.Pending, true),
-            new(2, new DateOnly(2026, 4, 2), "コンビニ", 500m, "Bob", PaymentStatus.Settled, true),
+            new(1, new DateOnly(2026, 4, 1), "スーパー", 1000m, "テスト太郎", PaymentStatus.Pending, true),
+            new(2, new DateOnly(2026, 4, 2), "コンビニ", 500m, "テスト花子", PaymentStatus.Settled, true),
         };
         _repo.Setup(r => r.QueryAsync(It.IsAny<DateOnly?>(), It.IsAny<DateOnly?>(), It.IsAny<string?>(),
                 It.IsAny<string?>(), It.IsAny<string?>(), It.IsAny<CancellationToken>()))
@@ -98,7 +98,7 @@ public class PaymentServiceTests
             From = new DateOnly(2026, 4, 1),
             To = new DateOnly(2026, 4, 30),
             Store = "スーパー",
-            Payer = "Alice",
+            Payer = "テスト太郎",
             Status = "Pending"
         };
         _repo.Setup(r => r.QueryAsync(It.IsAny<DateOnly?>(), It.IsAny<DateOnly?>(), It.IsAny<string?>(),
@@ -111,7 +111,7 @@ public class PaymentServiceTests
             new DateOnly(2026, 4, 1),
             new DateOnly(2026, 4, 30),
             "スーパー",
-            "Alice",
+            "テスト太郎",
             "Pending",
             It.IsAny<CancellationToken>()), Times.Once);
     }
@@ -124,32 +124,32 @@ public class PaymentServiceTests
         _repo.Setup(r => r.GetAsync(It.IsAny<long>(), It.IsAny<CancellationToken>()))
              .ReturnsAsync((Payment?)null);
 
-        await Assert.ThrowsAsync<KeyNotFoundException>(() => _sut.SettleAsync(99, "Alice", null, CancellationToken.None));
+        await Assert.ThrowsAsync<KeyNotFoundException>(() => _sut.SettleAsync(99, "テスト太郎", null, CancellationToken.None));
     }
 
     [Fact]
     public async Task SettleAsync_CallsUpdateAndHistory()
     {
-        var payment = new Payment(1, new DateOnly(2026, 4, 1), "スーパー", 1000m, "Alice", PaymentStatus.Pending, true);
+        var payment = new Payment(1, new DateOnly(2026, 4, 1), "スーパー", 1000m, "テスト太郎", PaymentStatus.Pending, true);
         _repo.Setup(r => r.GetAsync(1, It.IsAny<CancellationToken>())).ReturnsAsync(payment);
         _repo.Setup(r => r.UpdateAsync(It.IsAny<Payment>(), It.IsAny<byte[]?>(), It.IsAny<CancellationToken>())).Returns(Task.CompletedTask);
 
-        await _sut.SettleAsync(1, "Alice", null, CancellationToken.None);
+        await _sut.SettleAsync(1, "テスト太郎", null, CancellationToken.None);
 
         Assert.Equal(PaymentStatus.Settled, payment.Status);
         _repo.Verify(r => r.UpdateAsync(payment, null, It.IsAny<CancellationToken>()), Times.Once);
-        _history.Verify(h => h.AppendAsync(1, "Settle", It.IsAny<object>(), null, "Alice", It.IsAny<CancellationToken>()), Times.Once);
+        _history.Verify(h => h.AppendAsync(1, "Settle", It.IsAny<object>(), null, "テスト太郎", It.IsAny<CancellationToken>()), Times.Once);
     }
 
     [Fact]
     public async Task SettleAsync_PassesConcurrencyTokenToRepository()
     {
         var token = new byte[] { 1, 2, 3 };
-        var payment = new Payment(1, new DateOnly(2026, 4, 1), "スーパー", 1000m, "Alice", PaymentStatus.Pending, true);
+        var payment = new Payment(1, new DateOnly(2026, 4, 1), "スーパー", 1000m, "テスト太郎", PaymentStatus.Pending, true);
         _repo.Setup(r => r.GetAsync(1, It.IsAny<CancellationToken>())).ReturnsAsync(payment);
         _repo.Setup(r => r.UpdateAsync(It.IsAny<Payment>(), It.IsAny<byte[]?>(), It.IsAny<CancellationToken>())).Returns(Task.CompletedTask);
 
-        await _sut.SettleAsync(1, "Alice", token, CancellationToken.None);
+        await _sut.SettleAsync(1, "テスト太郎", token, CancellationToken.None);
 
         _repo.Verify(r => r.UpdateAsync(payment, token, It.IsAny<CancellationToken>()), Times.Once);
     }
@@ -162,33 +162,33 @@ public class PaymentServiceTests
         _repo.Setup(r => r.GetAsync(It.IsAny<long>(), It.IsAny<CancellationToken>()))
              .ReturnsAsync((Payment?)null);
 
-        await Assert.ThrowsAsync<KeyNotFoundException>(() => _sut.CancelAsync(99, "返品", "Alice", null, CancellationToken.None));
+        await Assert.ThrowsAsync<KeyNotFoundException>(() => _sut.CancelAsync(99, "返品", "テスト太郎", null, CancellationToken.None));
     }
 
     [Fact]
     public async Task CancelAsync_CallsUpdateAndHistory()
     {
-        var payment = new Payment(1, new DateOnly(2026, 4, 1), "スーパー", 1000m, "Alice", PaymentStatus.Pending, true);
+        var payment = new Payment(1, new DateOnly(2026, 4, 1), "スーパー", 1000m, "テスト太郎", PaymentStatus.Pending, true);
         _repo.Setup(r => r.GetAsync(1, It.IsAny<CancellationToken>())).ReturnsAsync(payment);
         _repo.Setup(r => r.UpdateAsync(It.IsAny<Payment>(), It.IsAny<byte[]?>(), It.IsAny<CancellationToken>())).Returns(Task.CompletedTask);
 
-        await _sut.CancelAsync(1, "返品", "Alice", null, CancellationToken.None);
+        await _sut.CancelAsync(1, "返品", "テスト太郎", null, CancellationToken.None);
 
         Assert.Equal(PaymentStatus.Cancelled, payment.Status);
         Assert.False(payment.IsActive);
         _repo.Verify(r => r.UpdateAsync(payment, null, It.IsAny<CancellationToken>()), Times.Once);
-        _history.Verify(h => h.AppendAsync(1, "Cancel", It.IsAny<object>(), "返品", "Alice", It.IsAny<CancellationToken>()), Times.Once);
+        _history.Verify(h => h.AppendAsync(1, "Cancel", It.IsAny<object>(), "返品", "テスト太郎", It.IsAny<CancellationToken>()), Times.Once);
     }
 
     [Fact]
     public async Task CancelAsync_PassesReasonToHistory()
     {
-        var payment = new Payment(1, new DateOnly(2026, 4, 1), "スーパー", 1000m, "Alice", PaymentStatus.Pending, true);
+        var payment = new Payment(1, new DateOnly(2026, 4, 1), "スーパー", 1000m, "テスト太郎", PaymentStatus.Pending, true);
         _repo.Setup(r => r.GetAsync(1, It.IsAny<CancellationToken>())).ReturnsAsync(payment);
         _repo.Setup(r => r.UpdateAsync(It.IsAny<Payment>(), It.IsAny<byte[]?>(), It.IsAny<CancellationToken>())).Returns(Task.CompletedTask);
 
-        await _sut.CancelAsync(1, "間違い購入", "Bob", null, CancellationToken.None);
+        await _sut.CancelAsync(1, "間違い購入", "テスト花子", null, CancellationToken.None);
 
-        _history.Verify(h => h.AppendAsync(1, "Cancel", It.IsAny<object>(), "間違い購入", "Bob", It.IsAny<CancellationToken>()), Times.Once);
+        _history.Verify(h => h.AppendAsync(1, "Cancel", It.IsAny<object>(), "間違い購入", "テスト花子", It.IsAny<CancellationToken>()), Times.Once);
     }
 }
